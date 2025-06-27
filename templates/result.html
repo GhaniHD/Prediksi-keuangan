@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Analisis - FinDetect</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../static/images/logo.png" alt="FinDetect Logo">
+                <span>FinDetect</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/features">Fitur</a></li>
+                <li><a href="/predict">Analisis</a></li>
+                <li><a href="/about">Tentang</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="result-container">
+            <h1>Hasil Analisis Keuangan</h1>
+            
+            {% if prediction == 'Sehat' %}
+                <div class="result-status status-healthy">
+                    <h2>Status: {{ prediction }}</h2>
+                    <p>👍 Keuangan UMKM Anda dalam kondisi baik!</p>
+                </div>
+                
+                <div class="recommendations">
+                    <h3>Rekomendasi:</h3>
+                    <ul>
+                        <li>Pertahankan kinerja keuangan yang baik</li>
+                        <li>Pertimbangkan untuk ekspansi bisnis</li>
+                        <li>Lakukan diversifikasi pendapatan</li>
+                        <li>Investasikan keuntungan untuk pertumbuhan jangka panjang</li>
+                    </ul>
+                </div>
+                
+            {% elif prediction == 'Kurang Sehat' %}
+                <div class="result-status status-warning">
+                    <h2>Status: {{ prediction }}</h2>
+                    <p>⚠️ Perlu perhatian khusus pada keuangan UMKM Anda</p>
+                </div>
+                
+                <div class="recommendations">
+                    <h3>Rekomendasi:</h3>
+                    <ul>
+                        <li>Perhatikan pengeluaran dan efisiensi biaya</li>
+                        <li>Tinjau kembali struktur hutang</li>
+                        <li>Tingkatkan manajemen arus kas</li>
+                        <li>Pertimbangkan restrukturisasi bisnis</li>
+                    </ul>
+                </div>
+                
+            {% else %}
+                <div class="result-status status-critical">
+                    <h2>Status: {{ prediction }}</h2>
+                    <p>❗ Kondisi keuangan UMKM Anda membutuhkan penanganan segera</p>
+                </div>
+                
+                <div class="recommendations">
+                    <h3>Rekomendasi:</h3>
+                    <ul>
+                        <li>Segera lakukan restrukturisasi keuangan</li>
+                        <li>Konsultasikan dengan ahli keuangan</li>
+                        <li>Pertimbangkan opsi pendanaan darurat</li>
+                        <li>Lakukan evaluasi menyeluruh model bisnis</li>
+                    </ul>
+                </div>
+            {% endif %}
+            
+            <div class="input-summary">
+                <h3>Ringkasan Input Anda:</h3>
+                <table>
+                    <tr>
+                        <td>Pendapatan Bulanan</td>
+                        <td>Rp {{ "{:,.0f}".format(features['pendapatan']|float) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pengeluaran Bulanan</td>
+                        <td>Rp {{ "{:,.0f}".format(features['pengeluaran']|float) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Hutang</td>
+                        <td>Rp {{ "{:,.0f}".format(features['hutang']|float) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Aset</td>
+                        <td>Rp {{ "{:,.0f}".format(features['aset']|float) }}</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <a href="/predict" class="btn-back">Lakukan Analisis Baru</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 FinDetect - All Rights Reserved</p>
+    </footer>
+</body>
+</html>

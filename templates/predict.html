@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Keuangan - FinDetect</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../static/images/logo.png" alt="FinDetect Logo">
+                <span>FinDetect</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/features">Fitur</a></li>
+                <li><a href="/predict" class="active">Analisis</a></li>
+                <li><a href="/about">Tentang</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h1>Analisis Kesehatan Keuangan UMKM</h1>
+            <form action="/predict" method="post">
+                <div class="form-group">
+                    <label for="pendapatan">Pendapatan Bulanan (Rp):</label>
+                    <input type="number" id="pendapatan" name="pendapatan" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pengeluaran">Pengeluaran Bulanan (Rp):</label>
+                    <input type="number" id="pengeluaran" name="pengeluaran" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="hutang">Total Hutang (Rp):</label>
+                    <input type="number" id="hutang" name="hutang" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="aset">Total Aset (Rp):</label>
+                    <input type="number" id="aset" name="aset" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="modal_kerja">Modal Kerja (Rp):</label>
+                    <input type="number" id="modal_kerja" name="modal_kerja" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="arus_kas">Arus Kas Bersih (Rp):</label>
+                    <input type="number" id="arus_kas" name="arus_kas" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="karyawan">Jumlah Karyawan:</label>
+                    <input type="number" id="karyawan" name="karyawan" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="laba">Laba/Rugi Terakhir (Rp):</label>
+                    <input type="number" id="laba" name="laba" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">Analisis Sekarang</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 FinDetect - All Rights Reserved</p>
+    </footer>
+</body>
+</html>
